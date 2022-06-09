@@ -5,10 +5,10 @@ import Layout from "../components/Layout";
 
 const Home: NextPage = () => {
   return (
-    <Layout>
+    <Layout >
       <div className="flex min-h-screen flex-col items-center justify-center py-2">
         <Head>
-          <title>rowland adimoha</title>
+          <title >Rowland Adimoha</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
