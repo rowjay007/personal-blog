@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import logo from "./assets/icons/rocket.svg";
+import logo from "./assets/icons/logo-2-01.png";
 
 interface Props {
   //boolean to always open ddm (for presentation)
@@ -23,7 +23,7 @@ const Header = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
+    <header>
       <nav className="bg-white dark:bg-[#1F2028]  shadow ">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex items-center justify-between h-16">
@@ -44,17 +44,17 @@ const Header = (props: Props) => {
                     </a>
                   </Link>
                   <Link href="/blog">
-                    <a className="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <a className="text-gray-800 dark:text-white  hover:text-gray-800 hover:underline dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                       Blog
                     </a>
                   </Link>
                   <Link href="/about">
-                    <a className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <a className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md hover:underline text-sm font-medium">
                       About
                     </a>
                   </Link>
                   <Link href="/contact">
-                    <a className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <a className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md hover:underline text-sm font-medium">
                       Contact
                     </a>
                   </Link>
@@ -119,7 +119,7 @@ const Header = (props: Props) => {
           </div>
         )}
       </nav>
-    </div>
+    </header>
   );
 };
 
