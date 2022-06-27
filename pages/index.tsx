@@ -8,9 +8,9 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import Post from "../components/Post";
 import { Key } from "react";
+import { sortByDate } from "../utils";
 
-const Home: NextPage = ({ posts }: any ) => {
-  console.log(posts);
+const Home: NextPage = ({ posts }: any) => {
   return (
     <Layout>
       <h1 className="text-5xl border-b4 p-5 font-bold">Latest Posts</h1>
@@ -28,7 +28,7 @@ const Home: NextPage = ({ posts }: any ) => {
   );
 };
 
-export async function getStaticProps(props: any) {
+export async function getStaticProps() {
   const files = fs.readdirSync(path.join("posts"));
   const posts = files.map((filename) => {
     const slug = filename.replace(".md", "");
@@ -45,11 +45,9 @@ export async function getStaticProps(props: any) {
     };
   });
 
-  console.log(posts);
-
   return {
     props: {
-      posts,
+      posts: posts.sort(sortByDate).slice(0, 6),
     },
   };
 }

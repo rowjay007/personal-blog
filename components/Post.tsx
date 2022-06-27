@@ -37,7 +37,9 @@ const Post = ({ post }: any) => {
             alt=""
             className="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block"
           />
-          <h3 className="text-gray-700 font-bold">{post.frontmatter.author} </h3>
+          <h3 className="text-gray-700 font-bold">
+            {post.frontmatter.author}{" "}
+          </h3>
         </div>
       </div>
     </div>
