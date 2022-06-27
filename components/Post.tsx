@@ -33,7 +33,7 @@ const Post = ({ post }: any) => {
         </Link>
         <div className="flex items-center">
           <img
-            src={post.frontmatter.author.author_image}
+            src={post.frontmatter.author_image}
             alt=""
             className="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block"
           />
