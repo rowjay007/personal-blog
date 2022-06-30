@@ -10,7 +10,7 @@ import { Key } from "react";
 import { sortByDate } from "../../../utils";
 import { POSTS_PER_PAGE } from "../../../config";
 
-const BlogPage: NextPage = ({ posts }: any) => {
+const BlogPage: NextPage = ({ posts, numPages, currentPage }) => {
   return (
     <Layout>
       <h1 className="text-5xl border-b4 p-5 font-bold">Blog</h1>
@@ -32,19 +32,18 @@ export async function getStaticPaths() {
 
   for (let i = 1; i <= numPages; i++) {
     paths.push({
-      params: {
-        page: { page_index: i.toString() },
-      },
+      params: { page_index: i.toString() },
     });
-    }
-    console.log(paths);
-    return {
-        paths,
-        fallback: false
-    };
+  }
+  return {
+    paths,
+    fallback: false,
+  };
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }: any) {
+  const page = parseInt((params && params.page_index) || 1);
+
   const files = fs.readdirSync(path.join("posts"));
   const posts = files.map((filename) => {
     const slug = filename.replace(".md", "");
@@ -61,9 +60,16 @@ export async function getStaticProps() {
     };
   });
 
+  const numPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const pageIndex = page - 1;
+  const orderedPosts = posts
+    .sort(sortByDate)
+    .slice(pageIndex * POSTS_PER_PAGE, (pageIndex + 1) * POSTS_PER_PAGE);
   return {
     props: {
-      posts: posts.sort(sortByDate),
+      posts: orderedPosts,
+      numPages,
+      currentPage: page,
     },
   };
 }
