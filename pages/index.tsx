@@ -1,14 +1,10 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
 import Layout from "../components/Layout";
 import Link from "next/link";
 import Post from "../components/Post";
 import { Key } from "react";
-import { sortByDate } from "../utils";
+import { getPosts } from "../lib/posts";
 
 const Home: NextPage = ({ posts }: any) => {
   return (
@@ -29,25 +25,9 @@ const Home: NextPage = ({ posts }: any) => {
 };
 
 export async function getStaticProps() {
-  const files = fs.readdirSync(path.join("posts"));
-  const posts = files.map((filename) => {
-    const slug = filename.replace(".md", "");
-
-    const markdownWithMeta = fs.readFileSync(
-      path.join("posts", filename),
-      "utf-8"
-    );
-    const { data: frontmatter } = matter(markdownWithMeta);
-
-    return {
-      slug,
-      frontmatter,
-    };
-  });
-
   return {
     props: {
-      posts: posts.sort(sortByDate).slice(0, 6),
+      posts: getPosts().slice(0, 6),
     },
   };
 }
