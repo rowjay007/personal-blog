@@ -9,6 +9,7 @@ import Post from "../../../components/Post";
 import { Key } from "react";
 import { sortByDate } from "../../../utils";
 import { POSTS_PER_PAGE } from "../../../config";
+import Pagination from "../../../components/Pagination";
 
 const BlogPage: NextPage = ({ posts, numPages, currentPage }) => {
   return (
@@ -19,6 +20,7 @@ const BlogPage: NextPage = ({ posts, numPages, currentPage }) => {
           <Post key={index} post={post} />
         ))}
       </div>
+      <Pagination currentPage={currentPage} numPages={numPages} />
     </Layout>
   );
 };

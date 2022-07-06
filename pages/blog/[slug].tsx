@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs";
 import React from "react";
 import matter from "gray-matter";
-import * as marked from "marked";
+import marked from "marked";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 
