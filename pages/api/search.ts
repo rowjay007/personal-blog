@@ -39,7 +39,5 @@ export default function handler(
       category.toLowerCase().indexOf(req.query.q) != -1
   );
 
-  console.log(results);
-  console.log("post");
-  res.status(200).json({ name: "John Doe" });
+  res.status(200).json(JSON.stringify(results));
 }
