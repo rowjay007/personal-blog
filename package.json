@@ -10,7 +10,8 @@
     "marked": "^4.0.17",
     "next": "latest",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-icons": "^4.4.0"
   },
   "devDependencies": {
     "@types/marked": "^4.0.3",
