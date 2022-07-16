@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import SearchResults from "./SearchResults";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -36,6 +37,7 @@ const Search = () => {
           </form>
         </div>
       </div>
+      <SearchResults results={searchResults} />
     </div>
   );
 };
